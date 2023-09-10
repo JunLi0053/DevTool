@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF2A4C562AAE1612008A78A3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2A4C552AAE1612008A78A3 /* ContentView.swift */; };
 		BFE14E0C2AAE0C35002C5CCF /* LocalizeToolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE14E0B2AAE0C35002C5CCF /* LocalizeToolApp.swift */; };
 		BFE14E102AAE0C36002C5CCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE14E0F2AAE0C36002C5CCF /* Assets.xcassets */; };
 		BFE14E132AAE0C36002C5CCF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE14E122AAE0C36002C5CCF /* Preview Assets.xcassets */; };
 		BFE14E1B2AAE0D0C002C5CCF /* LocateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE14E1A2AAE0D0C002C5CCF /* LocateView.swift */; };
 		BFE14E1D2AAE0D14002C5CCF /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE14E1C2AAE0D14002C5CCF /* CSV.swift */; };
-		BFE14E1F2AAE0D29002C5CCF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE14E1E2AAE0D29002C5CCF /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF2A4C552AAE1612008A78A3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BFE14E082AAE0C35002C5CCF /* LocalizeTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalizeTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE14E0B2AAE0C35002C5CCF /* LocalizeToolApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeToolApp.swift; sourceTree = "<group>"; };
 		BFE14E0F2AAE0C36002C5CCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -23,7 +24,6 @@
 		BFE14E142AAE0C36002C5CCF /* LocalizeTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LocalizeTool.entitlements; sourceTree = "<group>"; };
 		BFE14E1A2AAE0D0C002C5CCF /* LocateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocateView.swift; sourceTree = "<group>"; };
 		BFE14E1C2AAE0D14002C5CCF /* CSV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSV.swift; sourceTree = "<group>"; };
-		BFE14E1E2AAE0D29002C5CCF /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = "../../LocalizeTool 2/LocalizeTool/ContentView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +56,7 @@
 		BFE14E0A2AAE0C35002C5CCF /* LocalizeTool */ = {
 			isa = PBXGroup;
 			children = (
-				BFE14E1E2AAE0D29002C5CCF /* ContentView.swift */,
+				BF2A4C552AAE1612008A78A3 /* ContentView.swift */,
 				BFE14E1C2AAE0D14002C5CCF /* CSV.swift */,
 				BFE14E1A2AAE0D0C002C5CCF /* LocateView.swift */,
 				BFE14E0B2AAE0C35002C5CCF /* LocalizeToolApp.swift */,
@@ -146,8 +146,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFE14E1D2AAE0D14002C5CCF /* CSV.swift in Sources */,
-				BFE14E1F2AAE0D29002C5CCF /* ContentView.swift in Sources */,
 				BFE14E1B2AAE0D0C002C5CCF /* LocateView.swift in Sources */,
+				BF2A4C562AAE1612008A78A3 /* ContentView.swift in Sources */,
 				BFE14E0C2AAE0C35002C5CCF /* LocalizeToolApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
