@@ -7,36 +7,21 @@
 
 import Foundation
 public class CSV {
-    
-    let newLine: String = "\n"
-    
-    let csvData: String
-    
-    
-    
-    public let delimiter: String
-    
+
     public var headers: [String]
     
     public var columns: [String: [String]]
     
     public var rows: [[String: String]]
     
-    public var lines: [String]
+    public var lines: [[String]]
     
     public var numberOfColumns: Int
     
     public var numberOfRows: Int
     
-    
-    
-    // MARK: - Initialisers
-    
-    public init(with: String, delimiter: String = ",") {
-        
-        csvData = with.replacingOccurrences(of: "\r", with: "", options: NSString.CompareOptions.literal, range: nil)
-        
-        self.delimiter = delimiter
+    public init(lines : [[String]]) {
+        self.lines = lines
         
         headers = [String]()
         
@@ -44,69 +29,28 @@ public class CSV {
         
         rows = [[String: String]]()
         
-        lines = [String]()
-        
         numberOfColumns = 0
         
         numberOfRows = 0
         
-        
-        
         read()
-        
     }
-    
-    
-    
-    public convenience init(path: String, delimiter: String = ",", encoding: String.Encoding = .utf8) throws {
-        
-        let contents = try String(contentsOfFile: path, encoding: encoding)
-        
-        self.init(with: contents, delimiter: delimiter)
-        
-    }
+
     
     func read() {
         
-        processLines(csvData)
-        
-        numberOfColumns = lines[0].components(separatedBy: delimiter).count//获取列数
+        numberOfColumns = lines[0].count//获取列数
         
         numberOfRows = lines.count - 1//获取行数
         
-        headers = lines[0].components(separatedBy: delimiter)//第一行为表头
+        headers = lines[0]//第一行为表头
         
         setRows()
         
         setColumns()
         
     }
-    
-    //按行分割
-    
-    fileprivate func processLines(_ csv: String) {
-        
-        lines = csv.components(separatedBy: "\n")
-        
-        // Remove blank lines
-        
-        var i = 0
-        
-        for line in lines {
-            
-            if line.isEmpty {
-                
-                lines.remove(at: i)
-                
-                i -= 1
-                
-            }
-            
-            i += 1
-            
-        }
-        
-    }
+
     
     //获取每一行的数据
     
@@ -118,15 +62,15 @@ public class CSV {
             
             var row = [String: String]()
             
-            let vals = lines[i].components(separatedBy: delimiter)
+            let vals = lines[i]
             
-            var i = 0
+            var j = 0
             
             for header in headers {
                 
-                row[header] = vals[i]
+                row[header] = j < vals.count ? vals[j] : ""
                 
-                i+=1
+                j+=1
                 
             }
             
