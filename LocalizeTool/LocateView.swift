@@ -12,8 +12,10 @@ struct LocateView: View {
     let content : String
     var body: some View {
         GeometryReader {_ in
-            Text(content)
-                .textSelection(.enabled)
+            ScrollView {
+                Text(content)
+                    .textSelection(.enabled)
+            }
         }.padding()
     }
 }

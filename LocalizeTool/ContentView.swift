@@ -23,18 +23,18 @@ struct ContentView: View {
                         importing = true
                     }
                     .position(x: geo.size.width/2, y:geo.size.height/2)
-//                                    .fileImporter(
-//                                        isPresented: $importing,
-//                                        allowedContentTypes: [.plainText, UTType("com.microsoft.excel.xls")!]
-//                                    ) { result in
-//                                        switch result {
-//                                        case .success(let file):
-//                                            languages = handle(fileURL: file)
-//                
-//                                        case .failure(let error):
-//                                            print(error.localizedDescription)
-//                                        }
-//                                    }
+                                    .fileImporter(
+                                        isPresented: $importing,
+                                        allowedContentTypes: [.plainText, UTType("com.microsoft.excel.xls")!]
+                                    ) { result in
+                                        switch result {
+                                        case .success(let file):
+                                            languages = handle(fileURL: file)
+
+                                        case .failure(let error):
+                                            print(error.localizedDescription)
+                                        }
+                                    }
                 
             }.onDrop(of: ["public.file-url"], isTargeted: $dragOver) { providers -> Bool in
                 providers.first?.loadDataRepresentation(forTypeIdentifier: "public.file-url", completionHandler: { (data, error) in
@@ -57,7 +57,6 @@ struct ContentView: View {
             }
             
         }
-        
     }
 }
 
@@ -88,13 +87,22 @@ func handle(fileURL : URL) -> [String: String]{
     
     
     for path in try! file.parseWorksheetPaths() {
-        
-        let ws = try! file.parseWorksheet(at: path)
+        let worksheet = try! file.parseWorksheet(at: path)
         if let sharedStrings = try! file.parseSharedStrings() {
-            var lines = [[String]]()
-            for row in ws.data?.rows ?? [] {
-                let line = ws.cells(atRows: [row.reference]).compactMap{$0.stringValue(sharedStrings)}
-                lines.append(line)
+            var lines = [[String]]() // 创建一个二维数组来保存每一行的数据
+            let rows = worksheet.data?.rows ?? []
+            let columnNames = Set(rows.flatMap { $0.cells }.map { $0.reference.column.value })
+        
+            for row in 1...rows.count {
+                var line = [String]() // 创建一个数组来保存这一行的数据
+                for columnName in columnNames {
+                    if let columnRef = ColumnReference(columnName) {
+                        let reference = CellReference(columnRef, UInt(row))
+                        let cell = rows.flatMap { $0.cells }.first(where: { $0.reference == reference })
+                        line.append(cell?.stringValue(sharedStrings) ?? "")
+                    }
+                }
+                lines.append(line) // 添加这一行的数据到所有行的数据中
             }
             
             let csv = CSV(lines: lines)
@@ -114,8 +122,6 @@ func handle(fileURL : URL) -> [String: String]{
         }
     }
     
-    
-    
     return dict
 }
 
@@ -126,4 +132,6 @@ struct ContentView_Previews: PreviewProvider {
     }
     
 }
+
+
 
