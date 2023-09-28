@@ -20,21 +20,15 @@ struct ContentView: View {
             GeometryReader {geo in
                 Image("folder.fill.badge.plus")
                     .onTapGesture {
-                        importing = true
+                        let panel = NSOpenPanel()
+                        panel.allowedFileTypes = ["xlsx"]
+                        panel.allowsMultipleSelection = false
+                        if panel.runModal() == .OK, let url = panel.url {
+                            languages = handle(fileURL: url)
+                        }
                     }
                     .position(x: geo.size.width/2, y:geo.size.height/2)
-                                    .fileImporter(
-                                        isPresented: $importing,
-                                        allowedContentTypes: [.plainText, UTType("com.microsoft.excel.xls")!]
-                                    ) { result in
-                                        switch result {
-                                        case .success(let file):
-                                            languages = handle(fileURL: file)
-
-                                        case .failure(let error):
-                                            print(error.localizedDescription)
-                                        }
-                                    }
+                                    
                 
             }.onDrop(of: ["public.file-url"], isTargeted: $dragOver) { providers -> Bool in
                 providers.first?.loadDataRepresentation(forTypeIdentifier: "public.file-url", completionHandler: { (data, error) in
@@ -114,8 +108,10 @@ func handle(fileURL : URL) -> [String: String]{
                 let keys = csv.columns["Key"]
                 var localeContent = ""
                 for i in 0..<keys!.count {
-                    localeContent = localeContent +
-                    "\"\(keys![i])\" = \"\(languageLoc![i])\"" + "\n"
+                    if !keys![i].isEmpty {
+                        localeContent = localeContent +
+                        "\"\(keys![i])\" = \"\(languageLoc![i])\";" + "<br>"
+                    }
                 }
                 dict[language] = localeContent
             }
