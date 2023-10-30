@@ -9,7 +9,8 @@ import Foundation
 import SwiftUI
 import WebKit
 
-struct LocateView: View {
+struct TranslateView: View {
+    let language : String
     let content : String
     var body: some View {
 //        GeometryReader {_ in
@@ -19,30 +20,24 @@ struct LocateView: View {
 //            }
 //        }.padding()
      
-        WebView(text: content)
+        WebView(language: language, content: content)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
 struct WebView: NSViewRepresentable {
-    var text: String
+    var language: String
+    var content: String
     
     func makeNSView(context: Context) -> WKWebView {
         let webView = WKWebView()
         webView.configuration.mediaTypesRequiringUserActionForPlayback = .audio
-        if #available(macOS 14.0, *) {
-            webView.configuration.allowsInlinePredictions = true
-        } else {
-            // Fallback on earlier versions
-        }
-        webView.loadHTMLString("<p>\(text)</p>", baseURL: nil)
-        webView.loadHTMLString("<body style=\"background-color:black;color:white;\"><p>\(text)</p></body>", baseURL: nil)
+        webView.loadHTMLString("<body style=\"background-color:black;\"><p style=\"color:green;\">//================\(language)================</p><p style=\"color:white;\">\(content)</p></body>", baseURL: nil)
         return webView
     }
     
     func updateNSView(_ nsView: WKWebView, context: Context) {
-        nsView.loadHTMLString("<p>\(text)</p>", baseURL: nil)
-        nsView.loadHTMLString("<body style=\"background-color:black;color:white;\"><p>\(text)</p></body>", baseURL: nil)
+        nsView.loadHTMLString("<body style=\"background-color:black;\"><p style=\"color:green;\">//================\(language)================</p><p style=\"color:white;\">\(content)</p></body>", baseURL: nil)
     }
-    
 }
+

@@ -8,24 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		348156D91D2A47D9E3F45023 /* Pods_LocalizeTool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31559DCFE5A45B604A2E1E78 /* Pods_LocalizeTool.framework */; };
+		36F698042AEFA56600EF0B64 /* TranslateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F698012AEFA56600EF0B64 /* TranslateView.swift */; };
+		36F698052AEFA56600EF0B64 /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F698022AEFA56600EF0B64 /* CSV.swift */; };
+		36F698062AEFA56600EF0B64 /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F698032AEFA56600EF0B64 /* LanguageView.swift */; };
+		36F6980A2AEFA57300EF0B64 /* CreateModelTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F698082AEFA57300EF0B64 /* CreateModelTool.swift */; };
+		36F6980B2AEFA57300EF0B64 /* JsonToModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F698092AEFA57300EF0B64 /* JsonToModelView.swift */; };
 		BF2A4C562AAE1612008A78A3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2A4C552AAE1612008A78A3 /* ContentView.swift */; };
 		BFE14E0C2AAE0C35002C5CCF /* LocalizeToolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE14E0B2AAE0C35002C5CCF /* LocalizeToolApp.swift */; };
 		BFE14E102AAE0C36002C5CCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE14E0F2AAE0C36002C5CCF /* Assets.xcassets */; };
 		BFE14E132AAE0C36002C5CCF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE14E122AAE0C36002C5CCF /* Preview Assets.xcassets */; };
-		BFE14E1B2AAE0D0C002C5CCF /* LocateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE14E1A2AAE0D0C002C5CCF /* LocateView.swift */; };
-		BFE14E1D2AAE0D14002C5CCF /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE14E1C2AAE0D14002C5CCF /* CSV.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		31559DCFE5A45B604A2E1E78 /* Pods_LocalizeTool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocalizeTool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		36F698012AEFA56600EF0B64 /* TranslateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslateView.swift; sourceTree = "<group>"; };
+		36F698022AEFA56600EF0B64 /* CSV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSV.swift; sourceTree = "<group>"; };
+		36F698032AEFA56600EF0B64 /* LanguageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
+		36F698082AEFA57300EF0B64 /* CreateModelTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateModelTool.swift; sourceTree = "<group>"; };
+		36F698092AEFA57300EF0B64 /* JsonToModelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonToModelView.swift; sourceTree = "<group>"; };
 		BF2A4C552AAE1612008A78A3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BFE14E082AAE0C35002C5CCF /* LocalizeTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalizeTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE14E0B2AAE0C35002C5CCF /* LocalizeToolApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeToolApp.swift; sourceTree = "<group>"; };
 		BFE14E0F2AAE0C36002C5CCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFE14E122AAE0C36002C5CCF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BFE14E142AAE0C36002C5CCF /* LocalizeTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LocalizeTool.entitlements; sourceTree = "<group>"; };
-		BFE14E1A2AAE0D0C002C5CCF /* LocateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocateView.swift; sourceTree = "<group>"; };
-		BFE14E1C2AAE0D14002C5CCF /* CSV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSV.swift; sourceTree = "<group>"; };
 		D221367939B1A8C5567C98A4 /* Pods-LocalizeTool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalizeTool.release.xcconfig"; path = "Target Support Files/Pods-LocalizeTool/Pods-LocalizeTool.release.xcconfig"; sourceTree = "<group>"; };
 		E2901E27562029279850812D /* Pods-LocalizeTool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalizeTool.debug.xcconfig"; path = "Target Support Files/Pods-LocalizeTool/Pods-LocalizeTool.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -48,8 +54,26 @@
 				E2901E27562029279850812D /* Pods-LocalizeTool.debug.xcconfig */,
 				D221367939B1A8C5567C98A4 /* Pods-LocalizeTool.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		36F698002AEFA56600EF0B64 /* 多语言 */ = {
+			isa = PBXGroup;
+			children = (
+				36F698012AEFA56600EF0B64 /* TranslateView.swift */,
+				36F698022AEFA56600EF0B64 /* CSV.swift */,
+				36F698032AEFA56600EF0B64 /* LanguageView.swift */,
+			);
+			path = "多语言";
+			sourceTree = "<group>";
+		};
+		36F698072AEFA57300EF0B64 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				36F698082AEFA57300EF0B64 /* CreateModelTool.swift */,
+				36F698092AEFA57300EF0B64 /* JsonToModelView.swift */,
+			);
+			path = json;
 			sourceTree = "<group>";
 		};
 		9AB89FDC2BB5A955A55844AC /* Frameworks */ = {
@@ -81,9 +105,9 @@
 		BFE14E0A2AAE0C35002C5CCF /* LocalizeTool */ = {
 			isa = PBXGroup;
 			children = (
+				36F698072AEFA57300EF0B64 /* json */,
+				36F698002AEFA56600EF0B64 /* 多语言 */,
 				BF2A4C552AAE1612008A78A3 /* ContentView.swift */,
-				BFE14E1C2AAE0D14002C5CCF /* CSV.swift */,
-				BFE14E1A2AAE0D0C002C5CCF /* LocateView.swift */,
 				BFE14E0B2AAE0C35002C5CCF /* LocalizeToolApp.swift */,
 				BFE14E0F2AAE0C36002C5CCF /* Assets.xcassets */,
 				BFE14E142AAE0C36002C5CCF /* LocalizeTool.entitlements */,
@@ -214,9 +238,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFE14E1D2AAE0D14002C5CCF /* CSV.swift in Sources */,
-				BFE14E1B2AAE0D0C002C5CCF /* LocateView.swift in Sources */,
+				36F698042AEFA56600EF0B64 /* TranslateView.swift in Sources */,
+				36F698052AEFA56600EF0B64 /* CSV.swift in Sources */,
+				36F6980B2AEFA57300EF0B64 /* JsonToModelView.swift in Sources */,
+				36F6980A2AEFA57300EF0B64 /* CreateModelTool.swift in Sources */,
 				BF2A4C562AAE1612008A78A3 /* ContentView.swift in Sources */,
+				36F698062AEFA56600EF0B64 /* LanguageView.swift in Sources */,
 				BFE14E0C2AAE0C35002C5CCF /* LocalizeToolApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,7 +386,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cn.com.LocalizeTool.LocalizeTool;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.com.DevTools;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -388,7 +415,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cn.com.LocalizeTool.LocalizeTool;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.com.DevTools;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
