@@ -95,7 +95,7 @@ func handle(fileURL : URL) -> [String: String]{
                     if let columnRef = ColumnReference(columnName) {
                         let reference = CellReference(columnRef, UInt(row))
                         let cell = rows.flatMap { $0.cells }.first(where: { $0.reference == reference })
-                        line.append(cell?.stringValue(sharedStrings) ?? "")
+                        line.append(cell?.stringValue(sharedStrings) ?? (cell?.richStringValue(sharedStrings).first?.text ?? ""))
                     }
                 }
                 lines.append(line) // 添加这一行的数据到所有行的数据中
