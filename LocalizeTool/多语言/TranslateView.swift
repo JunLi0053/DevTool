@@ -11,23 +11,60 @@ import WebKit
 
 struct TranslateView: View {
     let language : String
-    let content : String
+    @State var orgContents : [String]
+    @State private var contents : [String]
+    @State private var text = "去重"
     var body: some View {
-//        GeometryReader {_ in
-//            ScrollView {
-//                Text(content)
-//                    .textSelection(.enabled)
-//            }
-//        }.padding()
-     
-        WebView(language: language, content: content)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+        
+        Text(text)
+            .font(.title2)
+            .onTapGesture {
+                if self.text == "去重" {
+                    self.text = "还原"
+                    contents = orgContents.duplicate()
+//                    contents = Array(Set(orgContents))
+                } else {
+                    self.text = "去重"
+                    contents = orgContents
+                }
+            }
+        WebView(language: language, contents: contents)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    
+    init(language: String, orgContents: [String]) {
+        self.language = language
+        self.orgContents = orgContents
+        self.contents = orgContents
     }
 }
 
+public extension Array where Element: Equatable {
+   
+   /// 去除数组重复元素
+   /// - Returns: 去除数组重复元素后的数组
+   func duplicate() -> Array {
+      return self.enumerated().filter { (index,value) -> Bool in
+           return self.firstIndex(of: value) == index
+       }.map { (_, value) in
+           value
+       }
+   }
+}
+
+
 struct WebView: NSViewRepresentable {
     var language: String
-    var content: String
+    var contents: [String]
+    var content : String {
+        get {
+            var localeContent = ""
+            contents.forEach { s in
+                localeContent = localeContent + s
+            }
+            return localeContent
+        }
+    }
     
     func makeNSView(context: Context) -> WKWebView {
         let webView = WKWebView()

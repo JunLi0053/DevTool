@@ -11,7 +11,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var selectedMenuItem: String? = nil
-    @State var languages = [String: String]()
+    @State var languages = [String: [String]]()
     private let titles = ["多语言", "json"]
     var body: some View {
         NavigationView {

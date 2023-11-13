@@ -15,7 +15,7 @@ struct LanguageView: View {
     @State var image = NSImage(named: "")
     @State private var dragOver = false
     @State private var importing = false
-    @Binding var languages : [String: String]
+    @Binding var languages : [String: [String]]
     var body: some View {
         HStack(spacing: 1) {
             GeometryReader {geo in
@@ -57,12 +57,12 @@ struct LanguageView: View {
 
 
 struct LanguageListView : View {
-    var languages = [String: String]()
+    var languages = [String: [String]]()
     var body: some View {
         NavigationView {
             List {
                 ForEach(Array(languages.keys), id: \.self){key in
-                    NavigationLink(destination: TranslateView(language: key, content: languages[key]!))
+                    NavigationLink(destination: TranslateView(language: key, orgContents: languages[key]!))
                         {
                             Text(key).font(.title3)
                         }
@@ -74,8 +74,9 @@ struct LanguageListView : View {
     }
 }
 
-func handle(fileURL : URL) -> [String: String]{
-    var dict = [String: String]()
+func handle(fileURL : URL) -> [String: [String]]{
+    var dict = [String: [String]]()
+    
     guard let file = XLSXFile(filepath: fileURL.absoluteString.replacingOccurrences(of: "file://", with: "")) else {
         print("XLSXFile......")
         return dict
@@ -109,14 +110,16 @@ func handle(fileURL : URL) -> [String: String]{
                 if checkIsLanguage(language) {
                     let languageLoc = csv.columns[language]
                     let keys = csv.columns["Key"]
-                    var localeContent = ""
+                    var locales = [String]()
+//                    var localeContent = ""
                     for i in 0..<keys!.count {
                         if !keys![i].isEmpty {
-                            localeContent = localeContent +
-                            "\"\(keys![i])\" = \"\(languageLoc![i])\";" + "<br>"
+                            locales.append("\"\(keys![i])\" = \"\(languageLoc![i])\";" + "<br>")
+//                            localeContent = localeContent +
+//                            "\"\(keys![i])\" = \"\(languageLoc![i])\";" + "<br>"
                         }
                     }
-                    dict[language] = localeContent
+                    dict[language] = locales
                 }
             }
         }
