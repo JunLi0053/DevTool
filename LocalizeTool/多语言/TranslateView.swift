@@ -15,21 +15,21 @@ struct TranslateView: View {
     @State private var contents : [String]
     @State private var text = "去重"
     var body: some View {
-        
-        Text(text)
-            .font(.title2)
-            .onTapGesture {
-                if self.text == "去重" {
-                    self.text = "还原"
-                    contents = orgContents.duplicate()
-//                    contents = Array(Set(orgContents))
-                } else {
-                    self.text = "去重"
-                    contents = orgContents
-                }
-            }
         WebView(language: language, contents: contents)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .toolbar {
+                ToolbarItem(placement: .automatic) {
+                    Button(text) {
+                        if self.text == "去重" {
+                            self.text = "还原"
+                            contents = orgContents.duplicate()
+                        } else {
+                            self.text = "去重"
+                            contents = orgContents
+                        }
+                    }
+                }
+            }
     }
     
     init(language: String, orgContents: [String]) {

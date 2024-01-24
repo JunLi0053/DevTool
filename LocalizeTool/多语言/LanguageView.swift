@@ -12,65 +12,40 @@ import CoreXLSX
 
 
 struct LanguageView: View {
+    @StateObject var appVM = AppVM()
     @State var image = NSImage(named: "")
     @State private var dragOver = false
     @State private var importing = false
-    @Binding var languages : [String: [String]]
     var body: some View {
-        HStack(spacing: 1) {
-            GeometryReader {geo in
-                Image("folder.fill.badge.plus")
-                    .onTapGesture {
-                        let panel = NSOpenPanel()
-                        panel.allowedFileTypes = ["xlsx"]
-                        panel.allowsMultipleSelection = false
-                        if panel.runModal() == .OK, let url = panel.url {
-                            languages = handle(fileURL: url)
-                        }
+        List {
+            ForEach(Array(appVM.languages.keys), id: \.self){key in
+                NavigationLink(destination: TranslateView(language: key, orgContents: appVM.languages[key]!))
+                    {
+                        Text(key).font(.title3)
                     }
-                    .position(x: geo.size.width/2, y:geo.size.height/2)
-                                    
-                
-            }.onDrop(of: ["public.file-url"], isTargeted: $dragOver) { providers -> Bool in
-                providers.first?.loadDataRepresentation(forTypeIdentifier: "public.file-url", completionHandler: { (data, error) in
-                    if let data = data, let path = NSString(data: data, encoding: 4), let url = URL(string: path as String) {
-                        languages = handle(fileURL: url)
-                    }
-                })
-                return true
             }
-            .onDrag {
-                let provider =  NSItemProvider()
-                return provider
-            }
-            .frame(width: 200)
-            
-            Divider().background(Color.black)
-            
-            GeometryReader { geo in
-                LanguageListView(languages: languages)
-            }
-            
+        }.onDrop(of: ["public.file-url"], isTargeted: $dragOver) { providers -> Bool in
+            providers.first?.loadDataRepresentation(forTypeIdentifier: "public.file-url", completionHandler: { (data, error) in
+                if let data = data, let path = NSString(data: data, encoding: 4), let url = URL(string: path as String) {
+                    appVM.languages = handle(fileURL: url)
+                }
+            })
+            return true
         }
-    }
-}
-
-
-struct LanguageListView : View {
-    var languages = [String: [String]]()
-    var body: some View {
-        NavigationView {
-            List {
-                ForEach(Array(languages.keys), id: \.self){key in
-                    NavigationLink(destination: TranslateView(language: key, orgContents: languages[key]!))
-                        {
-                            Text(key).font(.title3)
-                        }
+        .toolbar {
+            ToolbarItem(placement: .navigation) {
+                Button {
+                    let panel = NSOpenPanel()
+                    panel.allowedFileTypes = ["xlsx"]
+                    panel.allowsMultipleSelection = false
+                    if panel.runModal() == .OK, let url = panel.url {
+                        appVM.languages = handle(fileURL: url)
+                    }
+                } label: {
+                    Label("Floder", systemImage: "folder.fill.badge.plus")
                 }
             }
         }
-        .listStyle(SidebarListStyle())
-        
     }
 }
 
